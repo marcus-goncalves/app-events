@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.users import CreateUser, UpdateUser
+from schemas.users import CreateUser, UpdateUser
 
 DEFAULT_RESPONSE = {"msg": "to be implemented"}
 
