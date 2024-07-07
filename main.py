@@ -1,5 +1,12 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
-from routes.users import users
+from handlers.users import users
+from services import database
+
+load_dotenv()
+
+engine = database.start_engine()
+database.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Events API",
