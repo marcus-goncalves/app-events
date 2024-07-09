@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from handlers.users import users
+from handlers.roles import roles
 from services import database
 
 load_dotenv()
@@ -18,3 +19,4 @@ def healthcheck() -> dict:
     return {"msg": "server is up!"}
 
 app.include_router(users)
+app.include_router(roles)
