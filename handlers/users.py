@@ -4,8 +4,6 @@ from schemas.users import CreateUser, UpdateUser, ResponseUser
 from services import database
 from services import users as user_service
 
-DEFAULT_RESPONSE = {"msg": "to be implemented"}
-
 users = APIRouter(
     prefix="/user",
     tags=["Users"]
