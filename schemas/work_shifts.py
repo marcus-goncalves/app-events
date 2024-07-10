@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from datetime import datetime
 
 class WorkShift(BaseModel):
@@ -9,7 +9,6 @@ class WorkShift(BaseModel):
 
 class CreateWorkShift(WorkShift):
     name_key: str
-    pass
 
 class ResponseWorkShift(WorkShift):
     id: int
