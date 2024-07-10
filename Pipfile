@@ -9,6 +9,7 @@ fastapi = "*"
 pydantic = "*"
 email-validator = "*"
 sqlalchemy = "*"
+unidecode = "*"
 
 [dev-packages]
 
