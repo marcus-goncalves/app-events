@@ -1,16 +1,16 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-class WorkShift(BaseModel):
+class Schedule(BaseModel):
     description: str
     
     class Config:
         from_attributes = True
 
-class CreateWorkShift(WorkShift):
+class CreateSchedule(Schedule):
     name_key: str
 
-class ResponseWorkShift(WorkShift):
+class ResponseSchedule(Schedule):
     id: int
     name_key: str
     created_at: datetime

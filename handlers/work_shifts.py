@@ -1,10 +1,9 @@
-import string
-import unidecode
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from services import database
 from schemas.work_shifts import ResponseWorkShift, CreateWorkShift, WorkShift
 from services import work_shifts as work_shift_service
+from handlers.utils import convert_key
 
 work_shifts = APIRouter(
     prefix="/work-shifts",
@@ -17,7 +16,7 @@ work_shifts = APIRouter(
     summary="Creates an work shift",
     response_model=ResponseWorkShift)
 def create_work_shift(work_shift: WorkShift, db: Session = Depends(database.get_session)):
-    input_ws = CreateWorkShift(**work_shift.model_dump(), name_key=_convert_key(work_shift.description))
+    input_ws = CreateWorkShift(**work_shift.model_dump(), name_key=convert_key(work_shift.description))
     ws_in_db = work_shift_service.get_work_shift_by_key(input_ws.name_key, db)
     if ws_in_db:
         raise HTTPException(
@@ -50,5 +49,3 @@ def delete_work_shift(work_shift_id: int, db: Session = Depends(database.get_ses
 def get_all_work_shifts(db: Session = Depends(database.get_session)):
     return work_shift_service.get_all_work_shifts(db)
 
-def _convert_key(name: str) -> str:
-    return unidecode.unidecode(name).lower().translate(str.maketrans('', '', string.punctuation))
