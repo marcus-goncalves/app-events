@@ -13,7 +13,7 @@ schedules = APIRouter(
 @schedules.post(
     path="/",
     status_code=201,
-    summary="Creates an work shift",
+    summary="Creates a schedule",
     response_model=ResponseSchedule)
 def create_schedule(schedule: Schedule, db: Session = Depends(database.get_session)):
     input_sched = CreateSchedule(**schedule.model_dump(), name_key=convert_key(schedule.description))
@@ -30,7 +30,7 @@ def create_schedule(schedule: Schedule, db: Session = Depends(database.get_sessi
 @schedules.delete(
         path="/",
         status_code=200,
-        summary="Deletes an work shift")
+        summary="Deletes a schedule")
 def delete_schedule(schedule_id: int, db: Session = Depends(database.get_session)):
     sched_in_db = schedule_service.get_schedule_by_id(schedule_id, db)
     if not sched_in_db:
@@ -45,7 +45,7 @@ def delete_schedule(schedule_id: int, db: Session = Depends(database.get_session
 @schedules.get(
         path="/",
         status_code=200,
-        summary="Return all work shifts")
+        summary="Return al schedules")
 def get_all_schedules(db: Session = Depends(database.get_session)):
     return schedule_service.get_all_schedules(db)
 
