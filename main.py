@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from handlers.users import users
 from handlers.roles import roles
+from handlers.work_shifts import work_shifts
 from services import database
 
 load_dotenv()
@@ -20,3 +21,4 @@ def healthcheck() -> dict:
 
 app.include_router(users)
 app.include_router(roles)
+app.include_router(work_shifts)
