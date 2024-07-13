@@ -34,5 +34,5 @@ def get_user_by_id(user_id: int, db: Session):
     return db.query(users_db.User).filter(users_db.User.id == user_id).first()
 
 def get_users(db: Session):
-    users = db.query(users_db.User).all()
-    return {"data": users}
+    res = db.query(users_db.User).all()
+    return res

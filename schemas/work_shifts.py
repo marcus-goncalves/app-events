@@ -12,5 +12,4 @@ class CreateWorkShift(WorkShift):
 
 class ResponseWorkShift(WorkShift):
     id: int
-    name_key: str
     created_at: datetime
