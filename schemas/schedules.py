@@ -12,5 +12,4 @@ class CreateSchedule(Schedule):
 
 class ResponseSchedule(Schedule):
     id: int
-    name_key: str
     created_at: datetime

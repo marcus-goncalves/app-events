@@ -12,5 +12,4 @@ class CreateTeamsGroup(TeamsGroup):
 
 class ResponseTeamsGroup(TeamsGroup):
     id: int
-    name_key: str
     created_at: datetime
